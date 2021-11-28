@@ -5,14 +5,32 @@
     <meta charset="utf-8">
 </head>
 <body>
-
+    <datalist id="ipGio">
+        <option value="Tý">
+        <option value="Sửu">
+        <option value="Dần">
+        <option value="Mão">
+        <option value="Thìn">
+        <option value="Tỵ">
+        <option value="Ngọ">
+        <option value="Mùi">
+        <option value="Thân">
+        <option value="Dậu">
+        <option value="Tuất">
+        <option value="Hợi">
+     </datalist>
+    <center>
     <form id="thongtin" action="ansaotuvi.html">
-        Họ và tên: <input type="text" id="hovaten"><br><br>
-        Ngày sinh (ngày tháng và giờ sinh dương lịch): <input type="datetime-local" id="ngaysinh" ><br><br>
+
+        Họ và tên: <input type="text" id="iphovaten"><br><br>
+        Ngày/Tháng/Năm: Giờ sinh: <input type="number" id="ipngay" min="1" max="31"> 
+        / <input type="number" id="ipthang" min="1" max="12"> 
+        / <input type="number" id="ipnam" min="0" max="3000"> 
+        : <input type="search" list="ipGio"> <br><br>
         <button onclick="changeAction()">Nhập</button>
    
     </form>
-   
+    </center>
     <script src="myscript.js"></script>
 </body>
 </html>

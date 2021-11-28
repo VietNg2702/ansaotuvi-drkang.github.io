@@ -32,7 +32,9 @@ var viTriThan;
 var ViTriMenh;
 var ViTriTuVi;
 
-window.onload = function() {
+var HovaTen;
+var NgaySinh;
+
 //Tải Cung Địa Bàn
 for (let i = 0; i < 12; i++) {
     let id = "CungDiaBan" + (i + 1);
@@ -40,8 +42,8 @@ for (let i = 0; i < 12; i++) {
 }
 
 //Tải Thiên Bàn
-document.getElementById("hovaten").innerHTML = "Nguyễn Duy Việt";
-document.getElementById("ngaysinh").innerHTML = "27/02/1995";
+document.getElementById("hovaten").innerHTML = localStorage.hovaten;//"Nguyễn Duy Việt";
+document.getElementById("ngaysinh").innerHTML = localStorage.giosinh + "-" + localStorage.ngaysinh + "/" + localStorage.thangsinh + "/" + localStorage.namsinh;
 
 
 //Định Cung Mạng, Thân, và các Cung khác
@@ -68,10 +70,22 @@ anThaiTue("Hợi");
 //An Lộc Tồn
 anLocTon("Ất", "Nam");
 
-}
+
 function changeAction() {
+
+    
+    var hoten = document.getElementById("iphovaten").value;
+    var ngaysinh = document.getElementById("ipngay").value;
+    var thangsinh = document.getElementById("ipthang").value;
+    var namsinh = document.getElementById("ipnam").value;
+    var giosinh = document.getElementById(ipgio).value;
     document.getElementById("thongtin").action = "ansaotuvi.html";
-    document.thongtin.submit();
+    localStorage.hovaten = hoten;
+    localStorage.ngaysinh = ngaysinh;
+    localStorage.thangsinh = thangsinh;
+    localStorage.namsinh = namsinh;
+    localStorage.giosinh = giosinh;
+    
 }
 
 function dinhCungMangThan(gioSinh, thangSinh)
