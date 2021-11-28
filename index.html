@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <datalist id="ipGio">
+    <datalist id="mylist">
         <option value="Tý">
         <option value="Sửu">
         <option value="Dần">
@@ -19,18 +19,23 @@
         <option value="Tuất">
         <option value="Hợi">
      </datalist>
+    <datalist id="listGioi">
+        <option value="Nam">
+        <option value="Nữ">
+     </datalist>
     <center>
     <form id="thongtin" action="ansaotuvi.html">
 
-        Họ và tên: <input type="text" id="iphovaten"><br><br>
-        Ngày/Tháng/Năm: Giờ sinh: <input type="number" id="ipngay" min="1" max="31"> 
+        Họ và tên: <input type="text" id="iphovaten"> Giới tính: <input type="search" list="listGioi" id="ipgioitinh"> <br><br>
+        Ngày/Tháng/Năm: Giờ sinh: <br>
+        <input type="number" id="ipngay" min="1" max="31"> 
         / <input type="number" id="ipthang" min="1" max="12"> 
         / <input type="number" id="ipnam" min="0" max="3000"> 
-        : <input type="search" list="ipGio"> <br><br>
+        : <input type="search" list="mylist" id="ipgio"> <br><br>
         <button onclick="changeAction()">Nhập</button>
    
     </form>
     </center>
-    <script src="myscript.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

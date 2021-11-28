@@ -32,8 +32,17 @@ var viTriThan;
 var ViTriMenh;
 var ViTriTuVi;
 
-var HovaTen;
-var NgaySinh;
+var HovaTen = localStorage.hovaten;
+var GioiTinh = localStorage.gioitinh;
+var NgaySinh = localStorage.ngaysinh;
+var ThangSinh = localStorage.thangsinh;
+var NamSinh = localStorage.namsinh;
+var GioSinh = localStorage.giosinh;
+var CanSinh = tinhCanSinh(NamSinh);
+var ChiSinh = tinhChiSinh(NamSinh);
+
+console.log(CanSinh);
+console.log(ChiSinh);
 
 //Tải Cung Địa Bàn
 for (let i = 0; i < 12; i++) {
@@ -41,63 +50,74 @@ for (let i = 0; i < 12; i++) {
     document.getElementById(id).innerHTML = CungDiaBan[i].toString();
 }
 
+console.log(localStorage.hovaten);
+console.log(localStorage.ngaysinh);
+console.log(localStorage.thangsinh);
+console.log(localStorage.namsinh);
+console.log(localStorage.giosinh);
+console.log(localStorage.gioitinh);
 //Tải Thiên Bàn
-document.getElementById("hovaten").innerHTML = localStorage.hovaten;//"Nguyễn Duy Việt";
-document.getElementById("ngaysinh").innerHTML = localStorage.giosinh + "-" + localStorage.ngaysinh + "/" + localStorage.thangsinh + "/" + localStorage.namsinh;
+document.getElementById("hovaten").innerHTML = HovaTen;
+document.getElementById("ngaysinh").innerHTML = GioSinh + "-" + NgaySinh + "/" + ThangSinh + "/" + NamSinh;
 
+localStorage.removeItem("hovaten");
+localStorage.removeItem("giosinh");
+localStorage.removeItem("ngaysinh");
+localStorage.removeItem("thangsinh");
+localStorage.removeItem("namsinh");
+localStorage.removeItem("gioitinh");
 
 //Định Cung Mạng, Thân, và các Cung khác
-dinhCungMangThan(5,2);
+var x = DiaChi.indexOf(GioSinh) + 1;
+
+dinhCungMangThan(parseInt(x), parseInt(ThangSinh));
 
 //Định Cục
-var cuc = dinhCuc("Ất", "Hợi");
+var cuc = dinhCuc(CanSinh, ChiSinh);
 
 //Tìm Bản Mệnh
-document.getElementById("BanMenh").innerHTML = timBanMenh("Ất", "Hợi");
+document.getElementById("BanMenh").innerHTML = timBanMenh(CanSinh, ChiSinh);
 
 //Tính Đại vận, Tiểu Vận
-tinhDaiTieu("Nam", "Hợi", cuc);
+tinhDaiTieu(GioiTinh, ChiSinh, cuc);
 
 //An Tử Vi
-anTuVi("Thổ Ngũ Cục", 27);
+anTuVi(cuc, parseInt(NgaySinh));
 
 //An Tràng Sinh
-anTrangSinh("Thổ Ngũ Cục", "Nam");
+anTrangSinh(cuc, GioiTinh);
 
 //An Thái Tuế
-anThaiTue("Hợi");
+anThaiTue(ChiSinh);
 
 //An Lộc Tồn
-anLocTon("Ất", "Nam");
+anLocTon(CanSinh, GioiTinh);
 
+function tinhCanSinh(namSinh)
+{
+    let can = namSinh%10 - 4;
+    if(can < 0) can = can +10;
+    return ThienCan[can];
+}
 
-function changeAction() {
+function tinhChiSinh(namSinh)
+{
+    let chi = namSinh%12 - 4;
+    if(chi < 0) chi = chi + 12;
+    return DiaChi[chi];
 
-    
-    var hoten = document.getElementById("iphovaten").value;
-    var ngaysinh = document.getElementById("ipngay").value;
-    var thangsinh = document.getElementById("ipthang").value;
-    var namsinh = document.getElementById("ipnam").value;
-    var giosinh = document.getElementById(ipgio).value;
-    document.getElementById("thongtin").action = "ansaotuvi.html";
-    localStorage.hovaten = hoten;
-    localStorage.ngaysinh = ngaysinh;
-    localStorage.thangsinh = thangsinh;
-    localStorage.namsinh = namsinh;
-    localStorage.giosinh = giosinh;
-    
 }
 
 function dinhCungMangThan(gioSinh, thangSinh)
 {
     //Định Cung Thân
     viTriThan = (thangSinh + gioSinh)%12 - 2;
-
+    console.log(viTriThan);
     //Định Cung Mệnh
     if(thangSinh == gioSinh) ViTriMenh = 0;
     else if(thangSinh > gioSinh) ViTriMenh = (thangSinh - gioSinh);
     else if(thangSinh < gioSinh) ViTriMenh = (12 + thangSinh - gioSinh)
-
+    console.log(ViTriMenh);
     //Tải Cung Mệnh
     for(let i = 0; i < 12 ; i++)
     {
