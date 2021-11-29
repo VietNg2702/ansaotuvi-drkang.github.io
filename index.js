@@ -8,12 +8,19 @@ function changeAction() {
     var giosinh = document.getElementById("ipgio").value;
     var gioitinh = document.getElementById("ipgioitinh").value;
     var lich = document.getElementById("amlich").checked;
-    document.getElementById("thongtin").action = "ansaotuvi.html";
-    localStorage.hovaten = hoten;
-    localStorage.ngaysinh = ngaysinh;
-    localStorage.thangsinh = thangsinh;
-    localStorage.namsinh = namsinh;
-    localStorage.giosinh = giosinh;
-    localStorage.gioitinh = gioitinh;
-    localStorage.lich = lich;
+    if((gioitinh === "Nam")||(gioitinh === "Nữ"))
+    {
+        document.getElementById("thongtin").action = "ansaotuvi.html";
+        localStorage.hovaten = hoten;
+        localStorage.ngaysinh = ngaysinh;
+        localStorage.thangsinh = thangsinh;
+        localStorage.namsinh = namsinh;
+        localStorage.giosinh = giosinh;
+        localStorage.gioitinh = gioitinh;
+        localStorage.lich = lich;
+    }
+    else
+    {
+        alert("Xem lại giới tính !!");
+    }
 }
