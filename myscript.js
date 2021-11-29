@@ -317,9 +317,17 @@ anThaiTue(ChiSinh);
 //An Lộc Tồn
 anLocTon(CanSinh, GioiTinh);
 
-//An các Sao khác
-anSaoKhac(ChiSinh);
+//An Sao theo Thiên Can
+anSaoTheoCan(CanSinh);
 
+//An Sao theo Địa Chi
+anSaoTheoChi(ChiSinh);
+
+//An Sao theo Tháng Sinh
+anSaoTheoThang(ThangSinh);
+
+//An Sao theo Giờ Sinh
+anSaoTheoGio(GioSinh);
 
 function tinhCanSinh(namSinh)
 {
@@ -932,17 +940,6 @@ function anLocTon(tenCan, NamOrNu)
     let idKinhDuong = "SaoKhac" + (index_KinhDuong + 1);
     document.getElementById(idDaLa).innerHTML = "Đà La <br>";
     document.getElementById(idKinhDuong).innerHTML = "Kình Dương<br>";
-
-    saoThienKhoi(tenCan);
-    saoThienViet(tenCan);
-    saoThienQuan(tenCan);
-    saoThienPhuc(tenCan);
-    saoQuocAn(tenCan);
-    saoDuongPhu(tenCan);
-    saoLuuHa(tenCan);
-    saoThienTru(tenCan);
-    saoHoaLoc(tenCan);
-    saoHoaQuyen(tenCan);
     
 }
 
@@ -1068,6 +1065,20 @@ function saoHoaQuyen(tenCan)
             break;
         }
     }
+}
+
+function anSaoTheoCan(tenCan)
+{
+    saoThienKhoi(tenCan);
+    saoThienViet(tenCan);
+    saoThienQuan(tenCan);
+    saoThienPhuc(tenCan);
+    saoQuocAn(tenCan);
+    saoDuongPhu(tenCan);
+    saoLuuHa(tenCan);
+    saoThienTru(tenCan);
+    saoHoaLoc(tenCan);
+    saoHoaQuyen(tenCan);
 }
 
 function saoLongTri(tenChi)
@@ -1257,7 +1268,7 @@ function saoThienKhong(tenChi)
     document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Không<br>";
 }
 
-function anSaoKhac(tenChi)
+function anSaoTheoChi(tenChi)
 {
     saoLongTri(tenChi);
     saoPhuongCac(tenChi);
@@ -1276,4 +1287,176 @@ function anSaoKhac(tenChi)
     saoHoaCai(tenChi);
     saoPhaToai(tenChi);
     saoThienKhong(tenChi);
+}
+
+function saoTaPhu(tenThang)
+{
+    const arrayChi = ["Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Tả Phù<br>";
+
+}
+
+function saoHuuBat(tenThang)
+{
+    const arrayChi = ["Tuất", "Dậu", "Thân", "Mùi", "Ngọ", "Tỵ", "Thìn", "Mão", "Dần", "Sửu", "Tý", "Hợi"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Hữu Bật<br>";
+
+}
+
+function saoThienHinh(tenThang)
+{
+    const arrayChi = ["Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Hình<br>";
+
+}
+
+function saoThienRieu(tenThang)
+{
+    const arrayChi = ["Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Riêu<br>";
+
+}
+
+function saoThienY(tenThang)
+{
+    const arrayChi = ["Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Y<br>";
+
+}
+
+function saoThienGiai(tenThang)
+{
+    const arrayChi = ["Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Giải<br>";
+
+}
+
+function saoDiaGiai(tenThang)
+{
+    const arrayChi = ["Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ"];
+    const tempChi= arrayChi[tenThang];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Địa Giải<br>";
+
+}
+
+function anSaoTheoThang(tenThang)
+{
+    saoTaPhu(tenThang);
+    saoHuuBat(tenThang);
+    saoThienHinh(tenThang);
+    saoThienRieu(tenThang);
+    saoThienY(tenThang);
+    saoThienGiai(tenThang);
+    saoDiaGiai(tenThang);
+}
+
+function saoVanXuong(tenGio)
+{
+    const arrayChi = ["Tuất", "Dậu", "Thân", "Mùi", "Ngọ", "Tỵ", "Thìn", "Mão", "Dần", "Sửu", "Tý", "Hợi"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Văn Xương<br>";
+}
+
+function saoVanKhuc(tenGio)
+{
+    const arrayChi = ["Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Văn Khúc<br>";
+}
+
+function saoThaiPhu(tenGio)
+{
+    const arrayChi = ["Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thai Phụ<br>";
+}
+
+function saoPhongCao(tenGio)
+{
+    const arrayChi = ["Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Phong Cáo<br>";
+}
+
+function saoDiaKhong(tenGio)
+{
+    const arrayChi = ["Hợi", "Tuất", "Dậu", "Thân", "Mùi", "Ngọ", "Tỵ", "Thìn", "Mão", "Dần", "Sửu", "Tý"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Địa Không<br>";
+}
+
+function saoDiaKiep(tenGio)
+{
+    const arrayChi = ["Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất"];
+    const tempChi= arrayChi[DiaChi.indexOf(tenGio)];
+    const index = ChieuThuan.indexOf(tempChi);
+
+    let idThienKhoi = "SaoKhac" + (index + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Địa Kiếp<br>";
+}
+
+function anSaoTheoGio(tenGio)
+{
+    saoVanXuong(tenGio);
+    saoVanKhuc(tenGio);
+    saoThaiPhu(tenGio);
+    saoPhongCao(tenGio);
+    saoDiaKhong(tenGio);
+    saoDiaKiep(tenGio);
+
 }
