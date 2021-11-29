@@ -1638,9 +1638,9 @@ function saoAnQuang(tenNgay)
             break;
         }
     }
-    let a = index + tenNgay%12;
+    let a = index + tenNgay%12 -1;
     if(a > 11) a = a -12;
-    let b = a + 2;
+    let b = a -1;
     let idThienKhoi = "SaoKhac" + (b + 1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
     document.getElementById(idThienKhoi).innerHTML = temp + " Ân Quang<br>";
