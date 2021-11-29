@@ -235,7 +235,7 @@ const AnTuVi = [
 const ChieuThuan = ["Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu"];
 const AnTrangSinh = ["Tràng sinh", "Dưỡng", "Thai", "Tuyệt", "Mộ", "Tử", "Bệnh", "Suy", "Đế Vượng", "Lâm Quan", "Quan Đới", "Mộc Dục"];
 const AnThaiTue = ["Thái Tuế", "Thiếu Dương", "Tang Môn", "Thiếu Âm", "Quan Phù", "Tử Phù", "Tuế Phá", "Long Đức", "Bạch Hổ", "Phúc Đức", "Điếu Khách", "Trực Phù"];
-const AnLocTon = [ "Lộc Tồn, Bác Sỹ", "Lực Sỹ", "Thanh Long", "Tiểu Hao", "Tướng Quân", "Tấu thư", "Phi Liêm", "Hỷ Thần", "Bệnh Phù", "Đại Hao", "Phục Binh", "Quan Phủ"];
+const AnLocTon = [ "Lộc Tồn, Bác Sỹ", "Lực Sỹ", "Thanh Long", "Tiểu Hao", "Tướng Quân", "Tấu Thư", "Phi Liêm", "Hỷ Thần", "Bệnh Phù", "Đại Hao", "Phục Binh", "Quan Phủ"];
 const idDaiVan = ["DaiVan1","DaiVan2","DaiVan3","DaiVan4","DaiVan5","DaiVan6","DaiVan7","DaiVan8","DaiVan9","DaiVan10","DaiVan11","DaiVan12"];
 const idTieuVan = ["TieuVan1","TieuVan2","TieuVan3","TieuVan4","TieuVan5","TieuVan6","TieuVan7","TieuVan8","TieuVan9","TieuVan10","TieuVan11","TieuVan12"];
 const CungDiaBan = ["Dần Mộc +", "Mão Mộc -", "Thìn Thổ +", "Tỵ Hỏa -", "Ngọ Hỏa +", "Mùi Thổ -", "Thân Kim +", "Dậu Kim -", "Tuất Thổ +", "Hợi Thủy -", "Tý Thủy +", "Sửu Thổ -"];
@@ -324,10 +324,23 @@ anSaoTheoCan(CanSinh);
 anSaoTheoChi(ChiSinh);
 
 //An Sao theo Tháng Sinh
-anSaoTheoThang(ThangSinh);
+anSaoTheoThang(parseInt(ThangSinh));
 
 //An Sao theo Giờ Sinh
 anSaoTheoGio(GioSinh);
+
+//An Tuần Triệt
+anTuanTriet(CanSinh, ChiSinh);
+
+//An Sao Cố Định
+anSaoCoDinh();
+
+//An Sao Đẩu Quân
+saoDauQuan(parseInt(ThangSinh), GioSinh);
+
+saoAnQuang(parseInt(NgaySinh));
+
+saoThienQuy(parseInt(NgaySinh));
 
 function tinhCanSinh(namSinh)
 {
@@ -1033,7 +1046,7 @@ function saoThienTru(tenCan)
 
 function saoHoaLoc(tenCan)
 {
-    const arrayTuVi = ["Liêm", "Cơ", "Đồng", "Âm", "Tham", "Vũ", "Dương", "Cự", "Lương", "Phá"];
+    const arrayTuVi = ["Liêm Trinh", "Thiên Cơ", "Thiên Đồng", "Thái Âm", "Tham Lang", "Vũ Khúc", "Thái Dương", "Cự Môn", "Thiên Lương", "Phá Quân"];
     const tenTuVi= arrayTuVi[ThienCan.indexOf(tenCan)];
     for(let i = 0; i <12; i++)
     {
@@ -1051,7 +1064,7 @@ function saoHoaLoc(tenCan)
 
 function saoHoaQuyen(tenCan)
 {
-    const arrayTuVi = ["Phá", "Lương", "Cơ", "Đồng", "Âm", "Tham", "Vũ", "Dương", "Tử Vi", "Cự"];
+    const arrayTuVi = ["Phá Quân", "Thiên Lương", "Thiên Cơ", "Thiên Đồng", "Thái Âm", "Tham Lang", "Vũ Khúc", "Thái Dương", "Tử Vi", "Cự Môn"];
     const tenTuVi= arrayTuVi[ThienCan.indexOf(tenCan)];
     for(let i = 0; i <12; i++)
     {
@@ -1062,6 +1075,61 @@ function saoHoaQuyen(tenCan)
             let idThienKhoi = "SaoKhac" + (i + 1);
             let temp = document.getElementById(idThienKhoi).innerHTML;
             document.getElementById(idThienKhoi).innerHTML = temp + " Hóa Quyền<br>";
+            break;
+        }
+    }
+}
+
+
+function saoHoaKhoi(tenCan)
+{
+    const arrayTuVi = ["Vũ Khúc", "Tử Vi", "Văn Xương", "Thiên Cơ", "Hữu Bật", "Thiên Lương", "Thái Âm", "Văn Khúc", "Tả Phụ", "Thái Âm"];
+    const tenTuVi= arrayTuVi[ThienCan.indexOf(tenCan)];
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "AnTuVi" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf(tenTuVi) !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hóa Khôi<br>";
+            break;
+        }
+        let idAnSaoKhac = "SaoKhac" + (i+1);
+        let datak = document.getElementById(idAnSaoKhac).innerHTML;
+        if(datak.indexOf(tenTuVi) !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hóa Khôi<br>";
+            break;
+        }
+    }
+}
+
+function saoHoaKy(tenCan)
+{
+    const arrayTuVi = ["Thái Dương", "Thái Âm", "Liêm Trinh", "Cự Môn", "Thiên Cơ", "Văn Khúc", "Thiên Đồng", "Văn Xương", "Vũ Khúc", "Tham Lang"];
+    const tenTuVi= arrayTuVi[ThienCan.indexOf(tenCan)];
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "AnTuVi" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf(tenTuVi) !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hóa Kỵ<br>";
+            break;
+        }
+        let idAnSaoKhac = "SaoKhac" + (i+1);
+        let datak = document.getElementById(idAnSaoKhac).innerHTML;
+        if(datak.indexOf(tenTuVi) !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hóa Kỵ<br>";
             break;
         }
     }
@@ -1079,6 +1147,8 @@ function anSaoTheoCan(tenCan)
     saoThienTru(tenCan);
     saoHoaLoc(tenCan);
     saoHoaQuyen(tenCan);
+    saoHoaKhoi(tenCan);
+    saoHoaKy(tenCan);
 }
 
 function saoLongTri(tenChi)
@@ -1287,6 +1357,8 @@ function anSaoTheoChi(tenChi)
     saoHoaCai(tenChi);
     saoPhaToai(tenChi);
     saoThienKhong(tenChi);
+    saoThienTai(tenChi);
+    saoThienTho(tenChi);
 }
 
 function saoTaPhu(tenThang)
@@ -1458,5 +1530,167 @@ function anSaoTheoGio(tenGio)
     saoPhongCao(tenGio);
     saoDiaKhong(tenGio);
     saoDiaKiep(tenGio);
+
+}
+
+function anTuanTriet(tenCan, tenChi)
+{
+    let retTuan;
+    let indexCan = ThienCan.indexOf(tenCan);
+    let indexChi = DiaChi.indexOf(tenChi);
+    let a = indexChi - indexCan;
+    if(a < 0) a = a +12;
+    switch(a)
+    {
+        case 0: retTuan = "Tuất - Hợi";
+        break;
+        case 10: retTuan = "Thân - Dậu";
+        break;
+        case 8: retTuan = "Ngọ - Mùi";
+        break;
+        case 6: retTuan = "Thìn - Tỵ";
+        break;
+        case 4: retTuan = "Dần - Mão";
+        break;
+        case 2: retTuan = "Tý - Sửu";
+        break;
+    }
+    let retTriet;
+    switch(indexCan)
+    {
+        case 5:
+        case 0: retTriet = "Thân - Dậu";
+        break;
+        case 6:
+        case 1: retTriet = "Ngọ - Mùi";
+        break;
+        case 7:
+        case 2: retTriet = "Thìn - Tỵ";
+        break;
+        case 8:
+        case 3: retTriet = "Dần - Mão";
+        break;
+        case 9:
+        case 4: retTriet = "Tý - Sửu";
+        break;
+    }
+    
+    document.getElementById("TuanTriet").innerHTML = "Tuần tại: " + retTuan + "<br><br>Triệt tại: " + retTriet;
+}
+
+function saoDauQuan(tenThang, tenGio)
+{
+    let thaiTue;
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "AnThaiTue" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("Thái Tuế") !== -1)
+        {
+            thaiTue = i;
+            break;
+        }
+    }
+    let a = thaiTue - tenThang;
+    if(a < 0) a = a + 12;
+    let b = a + DiaChi.indexOf(tenGio) + 1;
+    if(b > 11) b = b -12;
+    let idThienKhoi = "SaoKhac" + (b + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Đẩu Quân<br>";
+        
+}
+
+function saoThienTai(tenChi)
+{
+    let a = ViTriMenh + DiaChi.indexOf(tenChi);
+    console.log(ViTriMenh);
+    console.log(a);
+    if(a > 11) a = a -12;
+    let idThienKhoi = "SaoKhac" + (a + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Tài<br>";
+        
+}
+
+function saoThienTho(tenChi)
+{
+    let a = viTriThan + DiaChi.indexOf(tenChi);
+    console.log(viTriThan);
+    console.log(a);
+    if(a > 11) a = a -12;
+    let idThienKhoi = "SaoKhac" + (a + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Thọ<br>";
+        
+}
+
+function saoAnQuang(tenNgay)
+{
+    let index;
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "SaoKhac" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("Văn Xương") !== -1)
+        {
+            index = i;
+            break;
+        }
+    }
+    let a = index + tenNgay%12;
+    if(a > 11) a = a -12;
+    let b = a + 2;
+    let idThienKhoi = "SaoKhac" + (b + 1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Ân Quang<br>";
+}
+
+function saoThienQuy(tenNgay)
+{
+    let index;
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "SaoKhac" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("Văn Khúc") !== -1)
+        {
+            index = i;
+            break;
+        }
+    }
+    let a = index - tenNgay%12;
+    if(a < 0) a = a +12;
+    let b = a + 2;
+    let idThienKhoi = "SaoKhac" + (b+1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Quý<br>";
+}
+
+function anSaoCoDinh()
+{
+    let temp = document.getElementById("SaoKhac3").innerHTML;
+    document.getElementById("SaoKhac3").innerHTML = temp + " Thiên La<br>";
+
+    temp = document.getElementById("SaoKhac9").innerHTML;
+    document.getElementById("SaoKhac9").innerHTML = temp + " Địa Võng<br>";
+
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "CungMenh" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("NÔ BỘC") !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Thương<br>";
+        }
+        if(data.indexOf("TẬT ÁCH") !== -1)
+        {
+            let idThienKhoi = "SaoKhac" + (i + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Sứ<br>";
+        }
+    }
 
 }
