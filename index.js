@@ -1,13 +1,13 @@
 function changeAction() {
 
     
-    var hoten = document.getElementById("iphovaten").value;
-    var ngaysinh = document.getElementById("ipngay").value;
-    var thangsinh = document.getElementById("ipthang").value;
-    var namsinh = document.getElementById("ipnam").value;
-    var giosinh = document.getElementById("ipgio").value;
-    var gioitinh = document.getElementById("ipgioitinh").value;
-    var lich = document.getElementById("amlich").checked;
+    var hoten = "Nguyễn Duy Việt";//document.getElementById("iphovaten").value;
+    var ngaysinh = "27";//document.getElementById("ipngay").value;
+    var thangsinh = "2";//document.getElementById("ipthang").value;
+    var namsinh = "1995";//document.getElementById("ipnam").value;
+    var giosinh = "Thìn";//document.getElementById("ipgio").value;
+    var gioitinh = "Nam";//document.getElementById("ipgioitinh").value;
+    var lich = "true";//document.getElementById("amlich").checked;
     if((gioitinh === "Nam")||(gioitinh === "Nữ"))
     {
         document.getElementById("thongtin").action = "ansaotuvi.html";
