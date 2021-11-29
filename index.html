@@ -3,6 +3,7 @@
 <head>
     <title>Nhập Thông Tin</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="mycss.css">
 </head>
 <body>
     <datalist id="mylist">
@@ -23,19 +24,25 @@
         <option value="Nam">
         <option value="Nữ">
      </datalist>
-    <center>
-    <form id="thongtin" action="ansaotuvi.html">
 
+    <form class="center" id="thongtin" action="ansaotuvi.html">
+    <center>
+        <br> <br>
+        <div class="title">AN SAO TỬ VI</div> <br> <br>
         Họ và tên: <input type="text" id="iphovaten"> Giới tính: <input type="search" list="listGioi" id="ipgioitinh"> <br><br>
-        (Âm lịch) Ngày/Tháng/Năm: Giờ sinh: <br><br>
+        <input type="radio" id="amlich" name="iplich" value="amlich">
+        <label for="amlich">Âm lịch</label>
+        <input type="radio" id="duonglich" name="iplich" value="duonglich"> 
+        <label for="duonglich">Dương lịch</label> <br><br>
+        Ngày/Tháng/Năm: Giờ sinh: <br><br>
         <input type="number" id="ipngay" min="1" max="31"> 
         / <input type="number" id="ipthang" min="1" max="12"> 
         / <input type="number" id="ipnam" min="0" max="3000"> 
         : <input type="search" list="mylist" id="ipgio"> <br><br>
-        <button onclick="changeAction()">Nhập</button>
-   
-    </form>
+        <button onclick="changeAction()">Nhập</button><br>
     </center>
+    </form>
+    
     <script src="index.js"></script>
 </body>
 </html>
