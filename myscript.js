@@ -1658,6 +1658,8 @@ function saoThienQuy(tenNgay)
     let a = index - tenNgay%12;
     if(a < 0) a = a +12;
     let b = a + 2;
+    if(b > 11) b = b - 12;
+    console.log(b);
     let idThienKhoi = "SaoKhac" + (b+1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
     document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Quý<br>";
