@@ -342,6 +342,10 @@ saoAnQuang(parseInt(NgaySinh));
 
 saoThienQuy(parseInt(NgaySinh));
 
+saoTamTai(parseInt(NgaySinh));
+
+saoBatToa(parseInt(NgaySinh));
+
 function tinhCanSinh(namSinh)
 {
     let can = namSinh%10 - 4;
@@ -1364,7 +1368,7 @@ function anSaoTheoChi(tenChi)
 function saoTaPhu(tenThang)
 {
     const arrayChi = ["Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang - 1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1376,7 +1380,7 @@ function saoTaPhu(tenThang)
 function saoHuuBat(tenThang)
 {
     const arrayChi = ["Tuất", "Dậu", "Thân", "Mùi", "Ngọ", "Tỵ", "Thìn", "Mão", "Dần", "Sửu", "Tý", "Hợi"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang - 1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1388,7 +1392,7 @@ function saoHuuBat(tenThang)
 function saoThienHinh(tenThang)
 {
     const arrayChi = ["Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang - 1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1400,7 +1404,7 @@ function saoThienHinh(tenThang)
 function saoThienRieu(tenThang)
 {
     const arrayChi = ["Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang - 1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1412,7 +1416,7 @@ function saoThienRieu(tenThang)
 function saoThienY(tenThang)
 {
     const arrayChi = ["Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang - 1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1424,7 +1428,7 @@ function saoThienY(tenThang)
 function saoThienGiai(tenThang)
 {
     const arrayChi = ["Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang -1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1436,7 +1440,7 @@ function saoThienGiai(tenThang)
 function saoDiaGiai(tenThang)
 {
     const arrayChi = ["Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ"];
-    const tempChi= arrayChi[tenThang];
+    const tempChi= arrayChi[tenThang -1];
     const index = ChieuThuan.indexOf(tempChi);
 
     let idThienKhoi = "SaoKhac" + (index + 1);
@@ -1663,6 +1667,48 @@ function saoThienQuy(tenNgay)
     let idThienKhoi = "SaoKhac" + (b+1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
     document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Quý<br>";
+}
+
+function saoTamTai(tenNgay)
+{
+    let index;
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "SaoKhac" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("Tả Phù") !== -1)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    let a = index + tenNgay%12 -1;
+    if(a > 11) a = a - 12;
+    let idThienKhoi = "SaoKhac" + (a+1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Tam Tai<br>";
+}
+
+function saoBatToa(tenNgay)
+{
+    let index;
+    for(let i = 0; i <12; i++)
+    {
+        let idAnTuVi = "SaoKhac" + (i+1);
+        let data = document.getElementById(idAnTuVi).innerHTML;
+        if(data.indexOf("Hữu Bật") !== -1)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    let a = index - tenNgay%12 + 1;
+    if(a < 0) a = a + 12;
+    let idThienKhoi = "SaoKhac" + (a+1);
+    let temp = document.getElementById(idThienKhoi).innerHTML;
+    document.getElementById(idThienKhoi).innerHTML = temp + " Bát Tọa<br>";
 }
 
 function anSaoCoDinh()
