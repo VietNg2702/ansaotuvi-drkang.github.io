@@ -346,6 +346,8 @@ saoTamTai(parseInt(NgaySinh));
 
 saoBatToa(parseInt(NgaySinh));
 
+saoHoaLinh(ChiSinh, GioSinh, GioiTinh);
+
 function tinhCanSinh(namSinh)
 {
     let can = namSinh%10 - 4;
@@ -366,7 +368,7 @@ function dinhCungMangThan(gioSinh, thangSinh)
     //Định Cung Thân
     viTriThan = thangSinh + gioSinh - 2;
     if(viTriThan > 11) viTriThan = viTriThan -12;
-    console.log(viTriThan);
+    
     //Định Cung Mệnh
     if(thangSinh == gioSinh) ViTriMenh = 0;
     else if(thangSinh > gioSinh) ViTriMenh = (thangSinh - gioSinh);
@@ -1526,6 +1528,105 @@ function saoDiaKiep(tenGio)
     document.getElementById(idThienKhoi).innerHTML = temp + " Địa Kiếp<br>";
 }
 
+function saoHoaLinh(tenChi, tenGio, NamOrNu)
+{
+    let hoa, linh;
+    switch(tenChi)
+    {
+        case "Dần":
+        case "Ngọ":
+        case "Tuất":
+            hoa = ChieuThuan.indexOf("Sửu");
+            linh = ChieuThuan.indexOf("Mão");
+        break;
+        case "Thân":
+        case "Tý":
+        case "Thìn":
+            hoa = ChieuThuan.indexOf("Dần");
+            linh = ChieuThuan.indexOf("Tuất");
+        break; 
+        case "Tỵ":
+        case "Dậu":
+        case "Sửu":
+            hoa = ChieuThuan.indexOf("Mão");
+            linh = ChieuThuan.indexOf("Tuất");
+        break;
+        case "Hợi":
+        case "Mão":
+        case "Mùi":
+            hoa = ChieuThuan.indexOf("Dậu");
+            linh = ChieuThuan.indexOf("Tuất");
+        break;
+    }
+
+    if(NamOrNu == "Nam")
+    {
+        if(ViTriMenh%2 === 1) //Âm Nam
+        {
+            console.log("Âm Nam" + hoa);
+            hoa = hoa - DiaChi.indexOf(tenGio);
+            if(hoa < 0) hoa = hoa +12;
+            let idThienKhoi = "SaoKhac" + (hoa + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hỏa Tinh<br>";
+            
+            linh = linh + DiaChi.indexOf(tenGio);
+            if(linh > 11) linh = linh -12;
+            idThienKhoi = "SaoKhac" + (linh + 1);
+            temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Linh Tinh<br>";
+        }
+        else //Dương Nam
+        {
+            console.log("Dương Nam");
+            hoa = hoa + DiaChi.indexOf(tenGio);
+            if(hoa > 11) hoa = hoa -12;
+            let idThienKhoi = "SaoKhac" + (hoa + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hỏa Tinh<br>";
+            
+            linh = linh - DiaChi.indexOf(tenGio);
+            if(linh < 0) linh = linh +12;
+            idThienKhoi = "SaoKhac" + (linh + 1);
+            temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Linh Tinh<br>";
+        }
+    }
+    else if(NamOrNu == "Nữ")
+    {
+        if(ViTriMenh%2 === 1) //Âm Nữ
+        {
+            console.log("Âm Nữ");
+            hoa = hoa + DiaChi.indexOf(tenGio);
+            if(hoa > 11) hoa = hoa -12;
+            let idThienKhoi = "SaoKhac" + (hoa + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hỏa Tinh<br>";
+            
+            linh = linh - DiaChi.indexOf(tenGio);
+            if(linh < 0) linh = linh +12;
+            idThienKhoi = "SaoKhac" + (linh + 1);
+            temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Linh Tinh<br>";
+        }
+        else //Dương nữ
+        {
+            console.log("Dương Nữ");
+            hoa = hoa - DiaChi.indexOf(tenGio);
+            if(hoa < 0) hoa = hoa +12;
+            let idThienKhoi = "SaoKhac" + (hoa + 1);
+            let temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Hỏa Tinh<br>";
+            
+            linh = linh + DiaChi.indexOf(tenGio);
+            if(linh > 11) linh = linh -12;
+            idThienKhoi = "SaoKhac" + (linh + 1);
+            temp = document.getElementById(idThienKhoi).innerHTML;
+            document.getElementById(idThienKhoi).innerHTML = temp + " Linh Tinh<br>";
+        }
+    }
+}
+
 function anSaoTheoGio(tenGio)
 {
     saoVanXuong(tenGio);
@@ -1534,7 +1635,6 @@ function anSaoTheoGio(tenGio)
     saoPhongCao(tenGio);
     saoDiaKhong(tenGio);
     saoDiaKiep(tenGio);
-
 }
 
 function anTuanTriet(tenCan, tenChi)
@@ -1663,7 +1763,6 @@ function saoThienQuy(tenNgay)
     if(a < 0) a = a +12;
     let b = a + 2;
     if(b > 11) b = b - 12;
-    console.log(b);
     let idThienKhoi = "SaoKhac" + (b+1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
     document.getElementById(idThienKhoi).innerHTML = temp + " Thiên Quý<br>";
