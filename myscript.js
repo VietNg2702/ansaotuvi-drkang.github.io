@@ -360,13 +360,13 @@ function tinhChiSinh(namSinh)
 function dinhCungMangThan(gioSinh, thangSinh)
 {
     //Định Cung Thân
-    viTriThan = (thangSinh + gioSinh)%12 - 2;
+    viTriThan = thangSinh + gioSinh - 2;
+    if(viTriThan > 11) viTriThan = viTriThan -12;
     console.log(viTriThan);
     //Định Cung Mệnh
     if(thangSinh == gioSinh) ViTriMenh = 0;
     else if(thangSinh > gioSinh) ViTriMenh = (thangSinh - gioSinh);
-    else if(thangSinh < gioSinh) ViTriMenh = (12 + thangSinh - gioSinh)
-    console.log(ViTriMenh);
+    else if(thangSinh < gioSinh) ViTriMenh = (12 + thangSinh - gioSinh);
     //Tải Cung Mệnh
     for(let i = 0; i < 12 ; i++)
     {
@@ -1604,8 +1604,6 @@ function saoDauQuan(tenThang, tenGio)
 function saoThienTai(tenChi)
 {
     let a = ViTriMenh + DiaChi.indexOf(tenChi);
-    console.log(ViTriMenh);
-    console.log(a);
     if(a > 11) a = a -12;
     let idThienKhoi = "SaoKhac" + (a + 1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
@@ -1616,8 +1614,6 @@ function saoThienTai(tenChi)
 function saoThienTho(tenChi)
 {
     let a = viTriThan + DiaChi.indexOf(tenChi);
-    console.log(viTriThan);
-    console.log(a);
     if(a > 11) a = a -12;
     let idThienKhoi = "SaoKhac" + (a + 1);
     let temp = document.getElementById(idThienKhoi).innerHTML;
